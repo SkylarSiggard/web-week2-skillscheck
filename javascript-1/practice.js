@@ -85,7 +85,7 @@ let me = {
 	firstName: 'Skylar',
 	state: 'Utah',
 	age: 25,
-	greeter: 'Come back '
+	greeter: function() {`Hello! My name is ${firstName} and I live in ${state}`}
 }
 
 //////////////////PROBLEM 12////////////////////
@@ -136,11 +136,10 @@ let doubled = myNumbers.map(function(el, i, arr) {
 
 // Now lets use .filter to only get the nubmer(s) greater than 100. Call the new array 'filtered'
 
-// let filtered = myNumbers.filter(function(el, i, arr) {
-// 	if (el < 100) {
-		
-// 	}
-// })
+let filtered = myNumbers.filter(function(number) {
+	return number > 100
+})
+console.log(filtered)
 
 //////////////////PROBLEM 16////////////////////
 
@@ -157,8 +156,10 @@ let total = myNumbers.reduce(function(acc, el, i, arr) {
 
 
 let myNumbersIndex = []
-
-
+myNumbers.forEach(function(el, index) {
+	myNumbersIndex.push(index)
+})
+// console.log(myNumbersIndex)
 
 
 //////////////////PROBLEM 18////////////////////
@@ -167,7 +168,15 @@ let myNumbersIndex = []
 //Call the new array 'forTheLoveOfGeorge'
 const notGeorge = ['Louis', 'Ted', 'Bill', 'Sharon', 'Mark', 'Angela']
 
-// Code Here
+let forTheLoveOfGeorge = notGeorge.map(function(el, i, arr) {
+	if (el !== 'George') {
+		return el = 'George'
+	}
+})
+// console.log(forTheLoveOfGeorge)
+
+
+
 
 //////////////////PROBLEM 19////////////////////
 
@@ -181,12 +190,17 @@ const people = [
 	{ name: 'George', friend: true, awesomeLevel: 7 }
 ]
 
-// Code Here
+let enemies = people.filter(function(notfriend) {
+	return notfriend.friend === false
+})
 
 //////////////////PROBLEM 20////////////////////
 
 // Using the people array above, let's get a total of the awesomeLevel from all the people. Call the new array 'totallyAwesome'. Use .reduce()
 
-// let totallyAwesome = people.reduce(function(acc, el, i, arr) {
-// 	return 
-// })
+let inValue = 0
+let totallyAwesome = people.reduce(function(accumulater, currentValue) {
+	return accumulater + currentValue.awesomeLevel
+}, inValue )
+
+// console.log(totallyAwesome)
